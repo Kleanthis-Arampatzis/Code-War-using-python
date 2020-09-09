@@ -1,0 +1,32 @@
+"""
+Some new cashiers started to work at your restaurant.
+
+They are good at taking orders, but they don't know how to capitalize words, or use a space bar!
+
+All the orders they create look something like this:
+
+"milkshakepizzachickenfriescokeburgerpizzasandwichmilkshakepizza"
+
+The kitchen staff are threatening to quit, because of how difficult it is to read the orders.
+
+Their preference is to get the orders as a nice clean string with spaces and capitals like so:
+
+"Burger Fries Chicken Pizza Pizza Pizza Sandwich Milkshake Milkshake Coke"
+
+The kitchen staff expect the items to be in the same order as they appear in the menu.
+"""
+def get_order(o):
+    menu=('burger','fries','chicken','pizza',
+          'sandwich','onionrings','milkshake',
+          'coke')
+    (s,out,a,b)=([],[],0,3)
+    while b<=(len(o)):
+        if o[a:(b+1)] in menu:
+            s.append(o[a:(b+1)])
+            (a,b)=((b+1),(b+3))
+        else:
+            b+=1
+    for i in menu:
+        for j in range(s.count(i)):
+            out.append(i.capitalize())
+    return ' '.join(out)
